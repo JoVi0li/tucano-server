@@ -13,11 +13,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Docket sign in
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build Docker image
+      - name: Create cert directory
+        run: mkdir -p cert
+      - name: Add SSL certificates
         run: |
           echo "${{ secrets.SSL_CERT }}" > cert/fullchain.pem
           echo "${{ secrets.SSL_KEY }}" > cert/privkey.pem
-          docker build -t jovioli/tucano-server .
+      - name: Build Docker image
+        run: docker build -t jovioli/tucano-server .
       - name: Push to Docker Hub
         run: docker push jovioli/tucano-server:latest
   deploy:
