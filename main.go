@@ -95,7 +95,10 @@ func main() {
 		}
 	})
 
-	err := http.ListenAndServe(":434", nil)
+	certFile := "/app/cert/fullchain.pem"
+	keyFile := "/app/cert/privkey.pem"
+
+	err := http.ListenAndServeTLS(":443", certFile, keyFile, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
