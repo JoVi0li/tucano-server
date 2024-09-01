@@ -15,6 +15,6 @@ RUN go build -o main ./main.go
 
 RUN chmod +x main
 
-EXPOSE 434
+EXPOSE 443
 
 CMD [ "./main" ]

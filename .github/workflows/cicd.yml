@@ -29,7 +29,9 @@ jobs:
       steps:
         - name: Pull Docker image
           run: docker pull jovioli/tucano-server:latest
-        - name: Delete old container
-          run: docker rm -f tucano-server  
+        - name: Stop and remove the old container
+          run: |
+            docker stop tucano-server-container || true
+            docker rm tucano-server-container || true
         - name: Run Docker container          
-          run: docker run -d -p 434:434 --name tucano-server-container jovioli/tucano-server
+          run: docker run -d -p 443:443 --name tucano-server-container jovioli/tucano-server
