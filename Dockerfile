@@ -8,10 +8,7 @@ RUN go mod tidy
 
 COPY . .
 
-COPY cert/fullchain.pem /app/cert/fullchain.pem
-COPY cert/privkey.pem /app/cert/privkey.pem
-
-RUN go build -o main ./main.go
+RUN go build -o main ./cmd/server/main.go
 
 RUN chmod +x main
 
