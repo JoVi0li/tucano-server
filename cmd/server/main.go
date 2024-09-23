@@ -10,7 +10,7 @@ import (
 func main() {
 	clientList := internal.NewClientList()
 
-	http.HandleFunc("/call", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		internal.HandleSignalling(w, r, clientList)
 	})
 
