@@ -1,2 +1,2 @@
 # tucano-server
-This server is responsible for authenticate users and signaling peers to create a WebRCT connection
+This server is responsible for signalling random peers to create a WebRCT connection
